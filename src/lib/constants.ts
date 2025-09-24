@@ -32,21 +32,21 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     name: '生活穿搭',
     slug: 'lifestyle',
     description: '日常生活中的高爾夫風格穿搭',
-    image: '/images/categories/lifestyle.jpg'
+    image: '/images/categories/lifestyle.png'
   },
   {
     id: 'apparel',
     name: '服飾',
     slug: 'apparel', 
     description: '專業高爾夫球服飾系列',
-    image: '/images/categories/apparel.jpg'
+    image: '/images/categories/apparel.png'
   },
   {
     id: 'accessories',
     name: '配件',
     slug: 'accessories',
     description: '精選高爾夫球配件用品',
-    image: '/images/categories/accessories.jpg'
+    image: '/images/categories/accessories.png'
   }
 ]
 
@@ -71,7 +71,7 @@ export const CONTENT = {
   },
   mission: {
     title: '我們的使命',
-    description: '登出內心，釋放真我。',
+    description: '登出片刻，揮桿上場。',
     cta: '瞭解更多'
   }
 } as const

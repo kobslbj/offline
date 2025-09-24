@@ -88,7 +88,7 @@ export function Footer() {
         <div className="border-t py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-sm text-muted-foreground">
-              © 2024 {SITE_CONFIG.name}. 保留所有權利。
+              © 2025 {SITE_CONFIG.name}. 保留所有權利。
             </div>
             
             <div className="flex space-x-6 text-sm">

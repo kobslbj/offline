@@ -7,7 +7,7 @@ export const SAMPLE_PRODUCTS: Product[] = [
     description: '舒適透氣的高品質POLO衫，適合球場內外穿著',
     price: 1200,
     originalPrice: 1500,
-    images: ['/images/products/polo-1.jpg'],
+    images: ['/images/products/polo-1.png'],
     category: {
       id: 'apparel',
       name: '服飾',
@@ -28,7 +28,7 @@ export const SAMPLE_PRODUCTS: Product[] = [
     name: '專業高爾夫帽',
     description: '防曬透氣設計，提供最佳的球場保護',
     price: 800,
-    images: ['/images/products/cap-1.jpg'],
+    images: ['/images/products/cap-1.png'],
     category: {
       id: 'accessories',
       name: '配件',
@@ -49,7 +49,7 @@ export const SAMPLE_PRODUCTS: Product[] = [
     name: '高爾夫球訓練組',
     description: '專業訓練用球組合，提升你的球技表現',
     price: 1600,
-    images: ['/images/products/training-balls.jpg'],
+    images: ['/images/products/accessories-1.png'],
     category: {
       id: 'accessories',
       name: '配件',

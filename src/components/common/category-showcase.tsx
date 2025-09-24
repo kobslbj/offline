@@ -30,18 +30,18 @@ export function CategoryShowcase() {
             >
               {/* Category Image */}
               <div className="relative aspect-[4/3] overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-br from-blue-900 via-purple-900 to-blue-800">
-                  {/* Category-specific gradient backgrounds */}
-                  <div className={`w-full h-full ${
-                    index === 0 ? 'bg-gradient-to-br from-green-600 to-green-800' :
-                    index === 1 ? 'bg-gradient-to-br from-blue-600 to-blue-800' :
-                    'bg-gradient-to-br from-purple-600 to-purple-800'
-                  }`}></div>
-                </div>
-                
+                <Image
+                  src={category.image}
+                  alt={category.name}
+                  fill
+                  priority={index === 0}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300" />
-                
+                <div className="absolute inset-0 bg-black/25 group-hover:bg-black/40 transition-colors duration-300" />
+
                 {/* Content Overlay */}
                 <div className="absolute inset-0 flex flex-col justify-end p-6">
                   <div className="text-white">
