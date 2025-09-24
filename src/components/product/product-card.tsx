@@ -73,19 +73,6 @@ export function ProductCard({ product, className }: ProductCardProps) {
           </motion.div>
         </Link>
         
-        {/* Sale Badge */}
-        <AnimatePresence>
-          {product.originalPrice && (
-            <motion.div 
-              className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg"
-              initial={{ scale: 0, rotate: -12 }}
-              animate={{ scale: 1, rotate: -12 }}
-              exit={{ scale: 0 }}
-            >
-              特價
-            </motion.div>
-          )}
-        </AnimatePresence>
 
         {/* Action Buttons Overlay */}
         <AnimatePresence>
@@ -166,6 +153,18 @@ export function ProductCard({ product, className }: ProductCardProps) {
 
       {/* Product Info */}
       <div className="p-6">
+        {/* New Badge */}
+        {product.featured && (
+          <motion.div 
+            className="inline-flex items-center px-2 py-1 mb-3 bg-emerald-100 text-emerald-700 text-xs font-semibold rounded-full"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            NEW
+          </motion.div>
+        )}
+        
         <Link href={`/products/${product.id}`}>
           <motion.h3 
             className="font-bold text-gray-900 text-lg mb-2 line-clamp-2 hover:text-gray-700 transition-colors"
