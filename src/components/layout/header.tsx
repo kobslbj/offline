@@ -7,6 +7,7 @@ import { useState, useEffect, useRef } from 'react'
 import { SITE_CONFIG } from '@/lib/constants'
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
 import { cn } from '@/lib/utils'
+import { usePathname } from 'next/navigation'
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -15,10 +16,16 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const searchInputRef = useRef<HTMLInputElement>(null)
   const { scrollY } = useScroll()
+  const pathname = usePathname()
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 100)
   })
+
+  // When on /shopping or /products, force solid header for better contrast with light background
+  const isShopping = pathname?.startsWith('/shopping') ?? false
+  const isProducts = pathname?.startsWith('/products') ?? false
+  const showSolid = isScrolled || isShopping || isProducts
 
   useEffect(() => {
     if (searchOpen && searchInputRef.current) {
@@ -43,7 +50,7 @@ export function Header() {
       <motion.header 
         className={cn(
           "fixed top-0 z-50 w-full transition-all duration-500",
-          isScrolled 
+          showSolid 
             ? "bg-white/95 backdrop-blur-xl shadow-lg" 
             : "bg-transparent"
         )}
@@ -65,7 +72,7 @@ export function Header() {
                   height={32}
                   className={cn(
                     "transition-opacity duration-300 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2",
-                    isScrolled ? "opacity-100" : "opacity-0"
+                    showSolid ? "opacity-100" : "opacity-0"
                   )}
                   priority
                 />
@@ -77,7 +84,7 @@ export function Header() {
                   height={32}
                   className={cn(
                     "transition-opacity duration-300 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2",
-                    isScrolled ? "opacity-0" : "opacity-100"
+                    showSolid ? "opacity-0" : "opacity-100"
                   )}
                   priority
                 />
@@ -87,10 +94,10 @@ export function Header() {
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-12">
               <Link 
-                href="/products" 
+                href="/shopping" 
                 className={cn(
                   "text-base font-normal transition-all duration-300 hover:opacity-80",
-                  isScrolled ? "text-gray-900" : "text-white"
+                  showSolid ? "text-gray-900" : "text-white"
                 )}
               >
                 購物
@@ -99,7 +106,7 @@ export function Header() {
                 href="/about" 
                 className={cn(
                   "text-base font-normal transition-all duration-300 hover:opacity-80",
-                  isScrolled ? "text-gray-900" : "text-white"
+                  showSolid ? "text-gray-900" : "text-white"
                 )}
               >
                 關於我們
@@ -112,7 +119,7 @@ export function Header() {
               <button 
                 className={cn(
                   "text-base font-normal transition-all duration-300 hover:opacity-80 hidden sm:block",
-                  isScrolled ? "text-gray-900" : "text-white"
+                  showSolid ? "text-gray-900" : "text-white"
                 )}
               >
                 繁體中文
@@ -122,7 +129,7 @@ export function Header() {
               <motion.button
                 className={cn(
                   "p-2 transition-all duration-300",
-                  isScrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"
+                  showSolid ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"
                 )}
                 onClick={() => setSearchOpen(true)}
                 whileHover={{ scale: 1.05 }}
@@ -136,7 +143,7 @@ export function Header() {
               <motion.button
                 className={cn(
                   "p-2 transition-all duration-300",
-                  isScrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"
+                  showSolid ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"
                 )}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -149,7 +156,7 @@ export function Header() {
               <motion.button
                 className={cn(
                   "p-2 transition-all duration-300",
-                  isScrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"
+                  showSolid ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"
                 )}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -162,7 +169,7 @@ export function Header() {
               <motion.button 
                 className={cn(
                   "p-2 lg:hidden transition-all duration-300",
-                  isScrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"
+                  showSolid ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"
                 )}
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 whileHover={{ scale: 1.05 }}
@@ -203,7 +210,7 @@ export function Header() {
             <motion.div
               className={cn(
                 "lg:hidden border-t",
-                isScrolled ? "border-gray-200 bg-white" : "border-white/10 bg-black/20 backdrop-blur-xl"
+                showSolid ? "border-gray-200 bg-white" : "border-white/10 bg-black/20 backdrop-blur-xl"
               )}
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
@@ -218,10 +225,10 @@ export function Header() {
                     transition={{ delay: 0.1 }}
                   >
                     <Link
-                      href="/products"
+                      href="/shopping"
                       className={cn(
                         "block text-lg font-medium py-2 transition-colors",
-                        isScrolled
+                        showSolid
                           ? "text-gray-900 hover:text-blue-600"
                           : "text-white hover:text-blue-200"
                       )}
@@ -239,7 +246,7 @@ export function Header() {
                       href="/about"
                       className={cn(
                         "block text-lg font-medium py-2 transition-colors",
-                        isScrolled
+                        showSolid
                           ? "text-gray-900 hover:text-blue-600"
                           : "text-white hover:text-blue-200"
                       )}
