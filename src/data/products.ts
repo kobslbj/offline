@@ -81,11 +81,24 @@ export const SAMPLE_PRODUCTS: Product[] = [
     },
     variants: [
       {
+        id: "polo-m-white",
+        name: "白色",
+        value: "#ffffff",
+        type: "color",
+        available: true,
+      },
+      {
         id: "polo-m-black",
         name: "黑色",
         value: "#000000",
         type: "color",
         available: true,
+        images: [
+          "/images/categories/mans/polo-1-gallery/black/polo-model-photo-front-black.png",
+          "/images/categories/mans/polo-1-gallery/black/polo-model-photo-black-back.png",
+          "/images/categories/mans/polo-1-gallery/black/polo-product-photo-black-front.png",
+          "/images/categories/mans/polo-1-gallery/black/polo-product-photo-black-back.png",
+        ],
       },
       {
         id: "polo-m-navy",
@@ -93,13 +106,12 @@ export const SAMPLE_PRODUCTS: Product[] = [
         value: "#1e3a8a",
         type: "color",
         available: true,
-      },
-      {
-        id: "polo-m-white",
-        name: "白色",
-        value: "#ffffff",
-        type: "color",
-        available: true,
+        images: [
+          "/images/categories/mans/polo-1-gallery/blue/polo-model-photo-front-blue.png",
+          "/images/categories/mans/polo-1-gallery/blue/polo-model-photo-blue-back.png",
+          "/images/categories/mans/polo-1-gallery/blue/polo-product-photo-blue-front.png",
+          "/images/categories/mans/polo-1-gallery/blue/polo-product-photo-blue-back.png",
+        ],
       },
     ],
     inStock: true,
@@ -127,11 +139,24 @@ export const SAMPLE_PRODUCTS: Product[] = [
     },
     variants: [
       {
+        id: "tshirt-m3-white",
+        name: "白色",
+        value: "#ffffff",
+        type: "color",
+        available: true,
+      },
+      {
         id: "tshirt-m3-black",
         name: "黑色",
         value: "#000000",
         type: "color",
         available: true,
+        images: [
+          "/images/categories/mans/tshirt-1-gallery/black/T-shirt-001-model-front-black.png",
+          "/images/categories/mans/tshirt-1-gallery/black/T-shirt-001-model-back-black.png",
+          "/images/categories/mans/tshirt-1-gallery/black/T-shirt-001-product-black-front.png",
+          "/images/categories/mans/tshirt-1-gallery/black/T-shirt-001-product-black-back.png",
+        ],
       },
       {
         id: "tshirt-m3-navy",
@@ -139,13 +164,12 @@ export const SAMPLE_PRODUCTS: Product[] = [
         value: "#1e3a8a",
         type: "color",
         available: true,
-      },
-      {
-        id: "tshirt-m3-white",
-        name: "白色",
-        value: "#ffffff",
-        type: "color",
-        available: true,
+        images: [
+          "/images/categories/mans/tshirt-1-gallery/blue/T-shirt-001-model-front-blue.png",
+          "/images/categories/mans/tshirt-1-gallery/blue/T-shirt-001-model-back-blue.png",
+          "/images/categories/mans/tshirt-1-gallery/blue/T-shirt-001-product-blue-front.png",
+          "/images/categories/mans/tshirt-1-gallery/blue/T-shirt-001-product-blue-back.png",
+        ],
       },
     ],
     inStock: true,
