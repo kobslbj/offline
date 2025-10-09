@@ -196,11 +196,24 @@ export const SAMPLE_PRODUCTS: Product[] = [
     },
     variants: [
       {
+        id: "tshirt-m4-white",
+        name: "白色",
+        value: "#ffffff",
+        type: "color",
+        available: true,
+      },
+      {
         id: "tshirt-m4-black",
         name: "黑色",
         value: "#000000",
         type: "color",
         available: true,
+        images: [
+          "/images/categories/mans/tshirt-2-gallery/black/t-shirt-002-model-front-black.png",
+          "/images/categories/mans/tshirt-2-gallery/black/t-shirt-002-model-back-black.png",
+          "/images/categories/mans/tshirt-2-gallery/black/t-shirt-002-product-black-front.png",
+          "/images/categories/mans/tshirt-2-gallery/black/t-shirt-002-product-black-back.png",
+        ],
       },
       {
         id: "tshirt-m4-navy",
@@ -208,13 +221,12 @@ export const SAMPLE_PRODUCTS: Product[] = [
         value: "#1e3a8a",
         type: "color",
         available: true,
-      },
-      {
-        id: "tshirt-m4-white",
-        name: "白色",
-        value: "#ffffff",
-        type: "color",
-        available: true,
+        images: [
+          "/images/categories/mans/tshirt-2-gallery/blue/t-shirt-002-model-front-blue.png",
+          "/images/categories/mans/tshirt-2-gallery/blue/t-shirt-002-model-back-blue.png",
+          "/images/categories/mans/tshirt-2-gallery/blue/t-shirt-002-product-blue-front.png",
+          "/images/categories/mans/tshirt-2-gallery/blue/t-shirt-002-product-blue-back.png",
+        ],
       },
     ],
     inStock: true,
