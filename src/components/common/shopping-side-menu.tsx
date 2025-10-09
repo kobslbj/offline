@@ -38,7 +38,7 @@ export function ShoppingSideMenu({ className }: { className?: string }) {
         "bg-white/80 backdrop-blur-xl ring-1 ring-black/5 shadow-[0_10px_40px_rgba(0,0,0,0.12)]",
         // shape and spacing
         "rounded-l-3xl px-5 sm:px-6 py-8 pt-24 md:pt-28",
-        className
+        className,
       )}
       aria-label="Shopping categories"
     >
@@ -63,14 +63,13 @@ export function ShoppingSideMenu({ className }: { className?: string }) {
                     href={item.href}
                     className="group inline-flex items-center gap-2 rounded-xl bg-gray-900 px-4 py-3 text-white shadow hover:bg-black transition-colors"
                   >
-                    <span className="text-base font-semibold tracking-tight">{item.label}</span>
+                    <span className="text-base font-semibold tracking-tight">
+                      {item.label}
+                    </span>
                     <ChevronRight className="h-4 w-4 opacity-80 transition-transform group-hover:translate-x-0.5" />
                   </Link>
                 ) : (
-                  <Link
-                    href={item.href}
-                    className="group block text-gray-900"
-                  >
+                  <Link href={item.href} className="group block text-gray-900">
                     <div className="inline-flex items-center gap-2">
                       <span className="text-2xl sm:text-3xl font-bold tracking-tight">
                         {item.label}

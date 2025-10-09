@@ -1,35 +1,35 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { ShoppingCart, Heart, Eye } from 'lucide-react'
-import { Product } from '@/lib/types'
-import { cn } from '@/lib/utils'
-import { useState } from 'react'
+import Image from "next/image";
+import Link from "next/link";
+import { ShoppingCart, Heart, Eye } from "lucide-react";
+import { Product } from "@/lib/types";
+import { cn } from "@/lib/utils";
+import { useState } from "react";
 
 interface ProductCardProps {
-  product: Product
-  className?: string
+  product: Product;
+  className?: string;
 }
 
 export function ProductCard({ product, className }: ProductCardProps) {
-  const [selectedVariant, setSelectedVariant] = useState(0)
-  const [isWishlisted, setIsWishlisted] = useState(false)
-  const [isHovered, setIsHovered] = useState(false)
+  const [selectedVariant, setSelectedVariant] = useState(0);
+  const [isWishlisted, setIsWishlisted] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('zh-TW', {
-      style: 'currency',
-      currency: 'TWD',
+    return new Intl.NumberFormat("zh-TW", {
+      style: "currency",
+      currency: "TWD",
       minimumFractionDigits: 0,
-    }).format(price)
-  }
+    }).format(price);
+  };
 
   return (
     <div
       className={cn(
         "group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500",
-        className
+        className,
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -52,8 +52,18 @@ export function ProductCard({ product, className }: ProductCardProps) {
               <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
                 <div className="text-center text-gray-400">
                   <div className="w-16 h-16 mx-auto mb-2 bg-gray-300 rounded-2xl flex items-center justify-center">
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    <svg
+                      className="w-8 h-8"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                      />
                     </svg>
                   </div>
                   <span className="text-xs font-medium">商品圖片</span>
@@ -62,7 +72,6 @@ export function ProductCard({ product, className }: ProductCardProps) {
             )}
           </div>
         </Link>
-
 
         {/* Action Buttons Overlay */}
         {isHovered && (
@@ -75,24 +84,23 @@ export function ProductCard({ product, className }: ProductCardProps) {
                   "w-10 h-10 rounded-full backdrop-blur-md shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-90",
                   isWishlisted
                     ? "bg-red-500 text-white"
-                    : "bg-white/90 text-gray-700 hover:bg-white"
+                    : "bg-white/90 text-gray-700 hover:bg-white",
                 )}
                 onClick={(e) => {
-                  e.preventDefault()
-                  setIsWishlisted(!isWishlisted)
+                  e.preventDefault();
+                  setIsWishlisted(!isWishlisted);
                 }}
               >
-                <Heart className={cn(
-                  "h-4 w-4",
-                  isWishlisted && "fill-current"
-                )} />
+                <Heart
+                  className={cn("h-4 w-4", isWishlisted && "fill-current")}
+                />
               </button>
 
               {/* Quick View Button */}
               <button
                 className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-md shadow-lg text-gray-700 hover:bg-white flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-90"
                 onClick={(e) => {
-                  e.preventDefault()
+                  e.preventDefault();
                   // Quick view logic
                 }}
               >
@@ -105,7 +113,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
               <button
                 className="w-full bg-black/90 backdrop-blur-md text-white py-3 px-4 rounded-full font-semibold flex items-center justify-center space-x-2 hover:bg-black hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
                 onClick={(e) => {
-                  e.preventDefault()
+                  e.preventDefault();
                   // Add to cart logic
                 }}
               >
@@ -149,7 +157,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
                     "w-7 h-7 rounded-full border-2 shadow-sm transition-all duration-200 hover:scale-110 active:scale-95",
                     selectedVariant === index
                       ? "border-gray-900 ring-2 ring-gray-900/20"
-                      : "border-gray-300 hover:border-gray-500"
+                      : "border-gray-300 hover:border-gray-500",
                   )}
                   style={{ backgroundColor: variant.value }}
                   onClick={() => setSelectedVariant(index)}
@@ -179,11 +187,9 @@ export function ProductCard({ product, className }: ProductCardProps) {
 
         {/* Stock Status */}
         {!product.inStock && (
-          <p className="text-sm text-red-500 font-medium">
-            暫時缺貨
-          </p>
+          <p className="text-sm text-red-500 font-medium">暫時缺貨</p>
         )}
       </div>
     </div>
-  )
+  );
 }

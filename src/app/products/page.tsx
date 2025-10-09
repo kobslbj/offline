@@ -10,14 +10,20 @@ export const metadata: Metadata = {
 export default async function ProductsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ category?: string }>
+  searchParams: Promise<{ category?: string }>;
 }) {
   const params = await searchParams;
-  const category = params.category || 'mens';
+  const category = params.category || "mens";
 
   return (
     <div className="min-h-screen bg-white">
-      <Suspense fallback={<div className="min-h-screen flex items-center justify-center">載入中...</div>}>
+      <Suspense
+        fallback={
+          <div className="min-h-screen flex items-center justify-center">
+            載入中...
+          </div>
+        }
+      >
         <ProductCatalog category={category} />
       </Suspense>
     </div>

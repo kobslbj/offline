@@ -14,6 +14,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This is a Next.js 15 application with the App Router using React 19, TypeScript, and Tailwind CSS.
 
 ### Project Structure
+
 - **App Router**: Uses `src/app/` directory for pages and layouts
 - **Components**: shadcn/ui components configured in `components.json` with aliases:
   - `@/components` for components
@@ -23,9 +24,11 @@ This is a Next.js 15 application with the App Router using React 19, TypeScript,
 - **Fonts**: Geist Sans and Geist Mono optimized with `next/font`
 
 ### Key Configurations
+
 - **TypeScript**: Path mapping configured with `@/*` pointing to `./src/*`
 - **shadcn/ui**: Configured with neutral base color, CSS variables, and Lucide icons
 - **Turbopack**: Enabled for both dev and build commands for faster compilation
 
 ### Utility Functions
+
 - `src/lib/utils.ts` exports a `cn()` function for combining Tailwind classes using clsx and tailwind-merge

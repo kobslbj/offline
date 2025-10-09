@@ -1,15 +1,15 @@
 interface PlaceholderImageProps {
-  width: number
-  height: number
-  text?: string
-  className?: string
+  width: number;
+  height: number;
+  text?: string;
+  className?: string;
 }
 
-export function PlaceholderImage({ 
-  width, 
-  height, 
-  text = "Image", 
-  className 
+export function PlaceholderImage({
+  width,
+  height,
+  text = "Image",
+  className,
 }: PlaceholderImageProps) {
   return (
     <svg
@@ -21,12 +21,12 @@ export function PlaceholderImage({
       xmlns="http://www.w3.org/2000/svg"
     >
       <rect width={width} height={height} fill="#f3f4f6" />
-      <rect 
-        x={width * 0.25} 
-        y={height * 0.25} 
-        width={width * 0.5} 
-        height={height * 0.5} 
-        fill="#d1d5db" 
+      <rect
+        x={width * 0.25}
+        y={height * 0.25}
+        width={width * 0.5}
+        height={height * 0.5}
+        fill="#d1d5db"
       />
       <text
         x={width / 2}
@@ -38,5 +38,5 @@ export function PlaceholderImage({
         {text}
       </text>
     </svg>
-  )
+  );
 }

@@ -1,11 +1,13 @@
-'use client'
+"use client";
 
-import { SAMPLE_PRODUCTS } from '@/data/products'
-import { ProductGrid } from './product-grid'
+import { SAMPLE_PRODUCTS } from "@/data/products";
+import { ProductGrid } from "./product-grid";
 
 export function FeaturedProducts() {
   // Filter featured products
-  const featuredProducts = SAMPLE_PRODUCTS.filter(product => product.featured)
+  const featuredProducts = SAMPLE_PRODUCTS.filter(
+    (product) => product.featured,
+  );
 
   return (
     <section className="py-16 bg-white">
@@ -19,12 +21,12 @@ export function FeaturedProducts() {
           </p>
         </div>
 
-        <ProductGrid 
+        <ProductGrid
           products={featuredProducts}
           columns={3}
           className="max-w-6xl mx-auto"
         />
       </div>
     </section>
-  )
+  );
 }

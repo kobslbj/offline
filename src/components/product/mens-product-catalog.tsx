@@ -1,117 +1,264 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { ProductCard } from '@/components/product/product-card'
-import { MissionSection } from '@/components/common/mission-section'
-import { cn } from '@/lib/utils'
-import { Product } from '@/lib/types'
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ProductCard } from "@/components/product/product-card";
+import { MissionSection } from "@/components/common/mission-section";
+import { cn } from "@/lib/utils";
+import { Product } from "@/lib/types";
 
 const categories = [
-  { id: 'all', label: '全部', count: 6 },
-  { id: 'apparel', label: '服飾', count: 4 },
-  { id: 'accessories', label: '配件', count: 2 },
-]
+  { id: "all", label: "全部", count: 6 },
+  { id: "apparel", label: "服飾", count: 4 },
+  { id: "accessories", label: "配件", count: 2 },
+];
 
 const mockProducts: Product[] = [
   {
-    id: '1',
-    name: '經典帽款休閒帽',
-    description: '簡約設計的日常帽款',
+    id: "1",
+    name: "經典帽款休閒帽",
+    description: "簡約設計的日常帽款",
     price: 1680,
-    images: ['/placeholder-cap.jpg'],
-    category: { id: 'accessories', name: '配件', slug: 'accessories', description: '', image: '' },
+    images: ["/placeholder-cap.jpg"],
+    category: {
+      id: "accessories",
+      name: "配件",
+      slug: "accessories",
+      description: "",
+      image: "",
+    },
     variants: [
-      { id: '1-1', name: '灰色', value: '#E5E7EB', type: 'color', available: true },
-      { id: '1-2', name: '黑色', value: '#1F2937', type: 'color', available: true },
-      { id: '1-3', name: '白色', value: '#F9FAFB', type: 'color', available: true },
+      {
+        id: "1-1",
+        name: "灰色",
+        value: "#E5E7EB",
+        type: "color",
+        available: true,
+      },
+      {
+        id: "1-2",
+        name: "黑色",
+        value: "#1F2937",
+        type: "color",
+        available: true,
+      },
+      {
+        id: "1-3",
+        name: "白色",
+        value: "#F9FAFB",
+        type: "color",
+        available: true,
+      },
     ],
     inStock: true,
     featured: true,
   },
   {
-    id: '2',
-    name: '經典款短袖Polo 衫',
-    description: '舒適的日常Polo衫',
+    id: "2",
+    name: "經典款短袖Polo 衫",
+    description: "舒適的日常Polo衫",
     price: 3300,
-    images: ['/placeholder-polo.jpg'],
-    category: { id: 'apparel', name: '服飾', slug: 'apparel', description: '', image: '' },
+    images: ["/placeholder-polo.jpg"],
+    category: {
+      id: "apparel",
+      name: "服飾",
+      slug: "apparel",
+      description: "",
+      image: "",
+    },
     variants: [
-      { id: '2-1', name: '白色', value: '#F9FAFB', type: 'color', available: true },
-      { id: '2-2', name: '藍色', value: '#3B82F6', type: 'color', available: true },
-      { id: '2-3', name: '灰色', value: '#6B7280', type: 'color', available: true },
+      {
+        id: "2-1",
+        name: "白色",
+        value: "#F9FAFB",
+        type: "color",
+        available: true,
+      },
+      {
+        id: "2-2",
+        name: "藍色",
+        value: "#3B82F6",
+        type: "color",
+        available: true,
+      },
+      {
+        id: "2-3",
+        name: "灰色",
+        value: "#6B7280",
+        type: "color",
+        available: true,
+      },
     ],
     inStock: true,
     featured: true,
   },
   {
-    id: '3',
-    name: '經典款短袖上衣',
-    description: '簡約的短袖T恤',
+    id: "3",
+    name: "經典款短袖上衣",
+    description: "簡約的短袖T恤",
     price: 2200,
-    images: ['/placeholder-tshirt.jpg'],
-    category: { id: 'apparel', name: '服飾', slug: 'apparel', description: '', image: '' },
+    images: ["/placeholder-tshirt.jpg"],
+    category: {
+      id: "apparel",
+      name: "服飾",
+      slug: "apparel",
+      description: "",
+      image: "",
+    },
     variants: [
-      { id: '3-1', name: '黑色', value: '#1F2937', type: 'color', available: true },
-      { id: '3-2', name: '白色', value: '#F9FAFB', type: 'color', available: true },
-      { id: '3-3', name: '灰色', value: '#6B7280', type: 'color', available: true },
+      {
+        id: "3-1",
+        name: "黑色",
+        value: "#1F2937",
+        type: "color",
+        available: true,
+      },
+      {
+        id: "3-2",
+        name: "白色",
+        value: "#F9FAFB",
+        type: "color",
+        available: true,
+      },
+      {
+        id: "3-3",
+        name: "灰色",
+        value: "#6B7280",
+        type: "color",
+        available: true,
+      },
     ],
     inStock: true,
     featured: false,
   },
   {
-    id: '4',
-    name: '經典款短袖上衣',
-    description: '舒適的日常T恤',
+    id: "4",
+    name: "經典款短袖上衣",
+    description: "舒適的日常T恤",
     price: 2200,
-    images: ['/placeholder-tshirt-2.jpg'],
-    category: { id: 'apparel', name: '服飾', slug: 'apparel', description: '', image: '' },
+    images: ["/placeholder-tshirt-2.jpg"],
+    category: {
+      id: "apparel",
+      name: "服飾",
+      slug: "apparel",
+      description: "",
+      image: "",
+    },
     variants: [
-      { id: '4-1', name: '黑色', value: '#1F2937', type: 'color', available: true },
-      { id: '4-2', name: '藍色', value: '#1E40AF', type: 'color', available: true },
-      { id: '4-3', name: '白色', value: '#F9FAFB', type: 'color', available: true },
+      {
+        id: "4-1",
+        name: "黑色",
+        value: "#1F2937",
+        type: "color",
+        available: true,
+      },
+      {
+        id: "4-2",
+        name: "藍色",
+        value: "#1E40AF",
+        type: "color",
+        available: true,
+      },
+      {
+        id: "4-3",
+        name: "白色",
+        value: "#F9FAFB",
+        type: "color",
+        available: true,
+      },
     ],
     inStock: true,
     featured: false,
   },
   {
-    id: '5',
-    name: '聯名上衣',
-    description: '特別聯名款式',
+    id: "5",
+    name: "聯名上衣",
+    description: "特別聯名款式",
     price: 0,
-    images: ['/placeholder-collab.jpg'],
-    category: { id: 'apparel', name: '服飾', slug: 'apparel', description: '', image: '' },
+    images: ["/placeholder-collab.jpg"],
+    category: {
+      id: "apparel",
+      name: "服飾",
+      slug: "apparel",
+      description: "",
+      image: "",
+    },
     variants: [
-      { id: '5-1', name: '黑色', value: '#1F2937', type: 'color', available: true },
-      { id: '5-2', name: '藍色', value: '#1E40AF', type: 'color', available: true },
-      { id: '5-3', name: '白色', value: '#F9FAFB', type: 'color', available: true },
+      {
+        id: "5-1",
+        name: "黑色",
+        value: "#1F2937",
+        type: "color",
+        available: true,
+      },
+      {
+        id: "5-2",
+        name: "藍色",
+        value: "#1E40AF",
+        type: "color",
+        available: true,
+      },
+      {
+        id: "5-3",
+        name: "白色",
+        value: "#F9FAFB",
+        type: "color",
+        available: true,
+      },
     ],
     inStock: false,
     featured: false,
   },
   {
-    id: '6',
-    name: 'T-shirt',
-    description: '基本款T恤',
+    id: "6",
+    name: "T-shirt",
+    description: "基本款T恤",
     price: 0,
-    images: ['/placeholder-basic-tee.jpg'],
-    category: { id: 'apparel', name: '服飾', slug: 'apparel', description: '', image: '' },
+    images: ["/placeholder-basic-tee.jpg"],
+    category: {
+      id: "apparel",
+      name: "服飾",
+      slug: "apparel",
+      description: "",
+      image: "",
+    },
     variants: [
-      { id: '6-1', name: '黑色', value: '#1F2937', type: 'color', available: true },
-      { id: '6-2', name: '藍色', value: '#1E40AF', type: 'color', available: true },
-      { id: '6-3', name: '白色', value: '#F9FAFB', type: 'color', available: true },
+      {
+        id: "6-1",
+        name: "黑色",
+        value: "#1F2937",
+        type: "color",
+        available: true,
+      },
+      {
+        id: "6-2",
+        name: "藍色",
+        value: "#1E40AF",
+        type: "color",
+        available: true,
+      },
+      {
+        id: "6-3",
+        name: "白色",
+        value: "#F9FAFB",
+        type: "color",
+        available: true,
+      },
     ],
     inStock: false,
     featured: false,
   },
-]
+];
 
 export function MensProductCatalog() {
-  const [selectedCategory, setSelectedCategory] = useState('all')
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
-  const filteredProducts = selectedCategory === 'all'
-    ? mockProducts
-    : mockProducts.filter(product => product.category.id === selectedCategory)
+  const filteredProducts =
+    selectedCategory === "all"
+      ? mockProducts
+      : mockProducts.filter(
+          (product) => product.category.id === selectedCategory,
+        );
 
   return (
     <div className="min-h-screen">
@@ -146,7 +293,7 @@ export function MensProductCatalog() {
                   "px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300",
                   selectedCategory === category.id
                     ? "bg-black text-white"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200",
                 )}
                 onClick={() => setSelectedCategory(category.id)}
                 whileHover={{ scale: 1.05 }}
@@ -189,7 +336,7 @@ export function MensProductCatalog() {
                   transition={{
                     duration: 0.5,
                     delay: index * 0.1,
-                    ease: "easeOut"
+                    ease: "easeOut",
                   }}
                 >
                   <ProductCard product={product} />
@@ -215,5 +362,5 @@ export function MensProductCatalog() {
       {/* Mission Section */}
       <MissionSection />
     </div>
-  )
+  );
 }

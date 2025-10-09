@@ -1,69 +1,79 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import Image from 'next/image'
-import { Search, ShoppingBag, User, Menu, X } from 'lucide-react'
-import { useState, useEffect, useRef } from 'react'
-import { SITE_CONFIG } from '@/lib/constants'
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
-import { cn } from '@/lib/utils'
-import { usePathname } from 'next/navigation'
+import Link from "next/link";
+import Image from "next/image";
+import { Search, ShoppingBag, User, Menu, X } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { SITE_CONFIG } from "@/lib/constants";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useMotionValueEvent,
+} from "framer-motion";
+import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 export function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [searchOpen, setSearchOpen] = useState(false)
-  const [searchQuery, setSearchQuery] = useState('')
-  const [isScrolled, setIsScrolled] = useState(false)
-  const searchInputRef = useRef<HTMLInputElement>(null)
-  const { scrollY } = useScroll()
-  const pathname = usePathname()
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isScrolled, setIsScrolled] = useState(false);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const { scrollY } = useScroll();
+  const pathname = usePathname();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    setIsScrolled(latest > 100)
-  })
+    setIsScrolled(latest > 100);
+  });
 
   // When on /shopping or /products, force solid header for better contrast with light background
-  const isShopping = pathname?.startsWith('/shopping') ?? false
-  const isProducts = pathname?.startsWith('/products') ?? false
-  const showSolid = isScrolled || isShopping || isProducts
+  const isShopping = pathname?.startsWith("/shopping") ?? false;
+  const isProducts = pathname?.startsWith("/products") ?? false;
+  const showSolid = isScrolled || isShopping || isProducts;
 
   useEffect(() => {
     if (searchOpen && searchInputRef.current) {
-      searchInputRef.current.focus()
+      searchInputRef.current.focus();
     }
-  }, [searchOpen])
+  }, [searchOpen]);
 
   const searchSuggestions = [
-    '高爾夫球衫',
-    '高爾夫帽子', 
-    '高爾夫手套',
-    'POLO衫',
-    '高爾夫球包'
-  ]
+    "高爾夫球衫",
+    "高爾夫帽子",
+    "高爾夫手套",
+    "POLO衫",
+    "高爾夫球包",
+  ];
 
-  const filteredSuggestions = searchSuggestions.filter(item => 
-    item.toLowerCase().includes(searchQuery.toLowerCase()) && searchQuery.length > 0
-  )
+  const filteredSuggestions = searchSuggestions.filter(
+    (item) =>
+      item.toLowerCase().includes(searchQuery.toLowerCase()) &&
+      searchQuery.length > 0,
+  );
 
   return (
     <>
-      <motion.header 
+      <motion.header
         className={cn(
           "fixed top-0 z-50 w-full transition-all duration-500",
-          showSolid 
-            ? "bg-white/95 backdrop-blur-xl shadow-lg" 
-            : "bg-transparent"
+          showSolid
+            ? "bg-white/95 backdrop-blur-xl shadow-lg"
+            : "bg-transparent",
         )}
       >
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex h-20 items-center justify-between">
             {/* Logo */}
-            <motion.div 
+            <motion.div
               className="flex items-center"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 400 }}
             >
-              <Link href="/" className="relative h-8 w-[120px] flex items-center justify-center">
+              <Link
+                href="/"
+                className="relative h-8 w-[120px] flex items-center justify-center"
+              >
                 {/* 黑色 Logo - 滾動後顯示 */}
                 <Image
                   src="/images/logos/Offline logo Black.png"
@@ -72,7 +82,7 @@ export function Header() {
                   height={32}
                   className={cn(
                     "transition-opacity duration-300 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2",
-                    showSolid ? "opacity-100" : "opacity-0"
+                    showSolid ? "opacity-100" : "opacity-0",
                   )}
                   priority
                 />
@@ -84,7 +94,7 @@ export function Header() {
                   height={32}
                   className={cn(
                     "transition-opacity duration-300 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2",
-                    showSolid ? "opacity-0" : "opacity-100"
+                    showSolid ? "opacity-0" : "opacity-100",
                   )}
                   priority
                 />
@@ -93,20 +103,20 @@ export function Header() {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-12">
-              <Link 
-                href="/shopping" 
+              <Link
+                href="/shopping"
                 className={cn(
                   "text-base font-normal transition-all duration-300 hover:opacity-80",
-                  showSolid ? "text-gray-900" : "text-white"
+                  showSolid ? "text-gray-900" : "text-white",
                 )}
               >
                 購物
               </Link>
-              <Link 
-                href="/about" 
+              <Link
+                href="/about"
                 className={cn(
                   "text-base font-normal transition-all duration-300 hover:opacity-80",
-                  showSolid ? "text-gray-900" : "text-white"
+                  showSolid ? "text-gray-900" : "text-white",
                 )}
               >
                 關於我們
@@ -116,10 +126,10 @@ export function Header() {
             {/* Actions */}
             <div className="flex items-center space-x-4">
               {/* Language Selector */}
-              <button 
+              <button
                 className={cn(
                   "text-base font-normal transition-all duration-300 hover:opacity-80 hidden sm:block",
-                  showSolid ? "text-gray-900" : "text-white"
+                  showSolid ? "text-gray-900" : "text-white",
                 )}
               >
                 繁體中文
@@ -129,7 +139,9 @@ export function Header() {
               <motion.button
                 className={cn(
                   "p-2 transition-all duration-300",
-                  showSolid ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"
+                  showSolid
+                    ? "text-gray-900 hover:bg-gray-100"
+                    : "text-white hover:bg-white/10",
                 )}
                 onClick={() => setSearchOpen(true)}
                 whileHover={{ scale: 1.05 }}
@@ -143,7 +155,9 @@ export function Header() {
               <motion.button
                 className={cn(
                   "p-2 transition-all duration-300",
-                  showSolid ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"
+                  showSolid
+                    ? "text-gray-900 hover:bg-gray-100"
+                    : "text-white hover:bg-white/10",
                 )}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -156,7 +170,9 @@ export function Header() {
               <motion.button
                 className={cn(
                   "p-2 transition-all duration-300",
-                  showSolid ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"
+                  showSolid
+                    ? "text-gray-900 hover:bg-gray-100"
+                    : "text-white hover:bg-white/10",
                 )}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -166,10 +182,12 @@ export function Header() {
               </motion.button>
 
               {/* Mobile Menu Toggle */}
-              <motion.button 
+              <motion.button
                 className={cn(
                   "p-2 lg:hidden transition-all duration-300",
-                  showSolid ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"
+                  showSolid
+                    ? "text-gray-900 hover:bg-gray-100"
+                    : "text-white hover:bg-white/10",
                 )}
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 whileHover={{ scale: 1.05 }}
@@ -210,7 +228,9 @@ export function Header() {
             <motion.div
               className={cn(
                 "lg:hidden border-t",
-                showSolid ? "border-gray-200 bg-white" : "border-white/10 bg-black/20 backdrop-blur-xl"
+                showSolid
+                  ? "border-gray-200 bg-white"
+                  : "border-white/10 bg-black/20 backdrop-blur-xl",
               )}
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
@@ -230,7 +250,7 @@ export function Header() {
                         "block text-lg font-medium py-2 transition-colors",
                         showSolid
                           ? "text-gray-900 hover:text-blue-600"
-                          : "text-white hover:text-blue-200"
+                          : "text-white hover:text-blue-200",
                       )}
                       onClick={() => setMobileMenuOpen(false)}
                     >
@@ -248,7 +268,7 @@ export function Header() {
                         "block text-lg font-medium py-2 transition-colors",
                         showSolid
                           ? "text-gray-900 hover:text-blue-600"
-                          : "text-white hover:text-blue-200"
+                          : "text-white hover:text-blue-200",
                       )}
                       onClick={() => setMobileMenuOpen(false)}
                     >
@@ -299,10 +319,10 @@ export function Header() {
                       <X className="h-5 w-5" />
                     </button>
                   </div>
-                  
+
                   {/* Search Suggestions */}
                   {filteredSuggestions.length > 0 && (
-                    <motion.div 
+                    <motion.div
                       className="mt-4 space-y-2"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -312,8 +332,8 @@ export function Header() {
                           key={suggestion}
                           className="w-full text-left px-4 py-3 hover:bg-gray-50 rounded-lg transition-colors"
                           onClick={() => {
-                            setSearchQuery(suggestion)
-                            setSearchOpen(false)
+                            setSearchQuery(suggestion);
+                            setSearchOpen(false);
                           }}
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
@@ -329,21 +349,23 @@ export function Header() {
                   )}
 
                   {/* Popular Searches */}
-                  {searchQuery === '' && (
-                    <motion.div 
+                  {searchQuery === "" && (
+                    <motion.div
                       className="mt-6"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.2 }}
                     >
-                      <h3 className="text-sm font-semibold text-gray-500 mb-3">熱門搜尋</h3>
+                      <h3 className="text-sm font-semibold text-gray-500 mb-3">
+                        熱門搜尋
+                      </h3>
                       <div className="flex flex-wrap gap-2">
                         {searchSuggestions.map((item) => (
                           <button
                             key={item}
                             onClick={() => {
-                              setSearchQuery(item)
-                              setSearchOpen(false)
+                              setSearchQuery(item);
+                              setSearchOpen(false);
                             }}
                             className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full text-sm font-medium transition-colors"
                           >
@@ -360,5 +382,5 @@ export function Header() {
         )}
       </AnimatePresence>
     </>
-  )
+  );
 }

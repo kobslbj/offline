@@ -1,10 +1,10 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
-import { PRODUCT_CATEGORIES, CONTENT } from '@/lib/constants'
-import { Button } from '@/components/ui/button'
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { PRODUCT_CATEGORIES, CONTENT } from "@/lib/constants";
+import { Button } from "@/components/ui/button";
 
 export function CategoryShowcase() {
   return (
@@ -45,13 +45,11 @@ export function CategoryShowcase() {
                 {/* Content Overlay */}
                 <div className="absolute inset-0 flex flex-col justify-end p-6">
                   <div className="text-white">
-                    <h3 className="text-2xl font-bold mb-2">
-                      {category.name}
-                    </h3>
+                    <h3 className="text-2xl font-bold mb-2">{category.name}</h3>
                     <p className="text-white/90 mb-4 line-clamp-2">
                       {category.description}
                     </p>
-                    
+
                     <Button
                       variant="secondary"
                       className="bg-white/90 text-black hover:bg-white group-hover:translate-x-1 transition-all duration-200"
@@ -67,5 +65,5 @@ export function CategoryShowcase() {
         </div>
       </div>
     </section>
-  )
+  );
 }

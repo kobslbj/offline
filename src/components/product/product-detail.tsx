@@ -13,18 +13,37 @@ interface ProductDetailProps {
 
 export function ProductDetail({ product }: ProductDetailProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [selectedVariant, setSelectedVariant] = useState(product.variants[0]?.id);
+  const [selectedVariant, setSelectedVariant] = useState(
+    product.variants[0]?.id,
+  );
+
+  // 根據選中的顏色取得對應的圖片組
+  const getCurrentImages = () => {
+    const variant = product.variants.find((v) => v.id === selectedVariant);
+    // 如果該顏色有自己的圖片，使用它；否則使用產品預設圖片
+    return variant?.images && variant.images.length > 0
+      ? variant.images
+      : product.images;
+  };
+
+  const currentImages = getCurrentImages();
 
   const nextImage = () => {
     setCurrentImageIndex((prev) =>
-      prev === product.images.length - 1 ? 0 : prev + 1
+      prev === currentImages.length - 1 ? 0 : prev + 1,
     );
   };
 
   const prevImage = () => {
     setCurrentImageIndex((prev) =>
-      prev === 0 ? product.images.length - 1 : prev - 1
+      prev === 0 ? currentImages.length - 1 : prev - 1,
     );
+  };
+
+  // 當切換顏色時，重置圖片索引
+  const handleVariantChange = (variantId: string) => {
+    setSelectedVariant(variantId);
+    setCurrentImageIndex(0);
   };
 
   return (
@@ -35,7 +54,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
           {/* 主圖 */}
           <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-gray-100">
             <Image
-              src={product.images[currentImageIndex]}
+              src={currentImages[currentImageIndex]}
               alt={product.name}
               fill
               className="object-cover object-center"
@@ -43,7 +62,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
             />
 
             {/* 圖片導航按鈕 */}
-            {product.images.length > 1 && (
+            {currentImages.length > 1 && (
               <>
                 <button
                   onClick={prevImage}
@@ -63,9 +82,9 @@ export function ProductDetail({ product }: ProductDetailProps) {
             )}
 
             {/* 圖片指示器 */}
-            {product.images.length > 1 && (
+            {currentImages.length > 1 && (
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                {product.images.map((_, index) => (
+                {currentImages.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentImageIndex(index)}
@@ -88,12 +107,15 @@ export function ProductDetail({ product }: ProductDetailProps) {
           <nav className="text-sm mb-4">
             <ol className="flex items-center gap-2">
               <li>
-                <Link href="/products" className="text-gray-500 hover:text-black transition-colors">
+                <Link
+                  href="/products"
+                  className="text-gray-500 hover:text-black transition-colors"
+                >
                   {product.category.name}
                 </Link>
               </li>
               <li className="text-gray-300">/</li>
-              <li className="text-gray-900">{product.name.split(' ')[0]}</li>
+              <li className="text-gray-900">{product.name.split(" ")[0]}</li>
             </ol>
           </nav>
 
@@ -115,9 +137,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
               </p>
             </div>
             {product.originalPrice && (
-              <p className="mt-1 text-sm text-blue-600 font-medium">
-                新上市
-              </p>
+              <p className="mt-1 text-sm text-blue-600 font-medium">新上市</p>
             )}
           </div>
 
@@ -133,10 +153,10 @@ export function ProductDetail({ product }: ProductDetailProps) {
             <div className="mt-8">
               <div className="flex items-center justify-between">
                 <h3 className="text-sm font-medium text-gray-900">
-                  {product.variants[0].type === 'color' ? '顏色' : '尺寸'}
+                  {product.variants[0].type === "color" ? "顏色" : "尺寸"}
                 </h3>
                 <span className="text-sm text-gray-500">
-                  {product.variants.find(v => v.id === selectedVariant)?.name}
+                  {product.variants.find((v) => v.id === selectedVariant)?.name}
                 </span>
               </div>
 
@@ -144,31 +164,31 @@ export function ProductDetail({ product }: ProductDetailProps) {
                 {product.variants.map((variant) => (
                   <button
                     key={variant.id}
-                    onClick={() => setSelectedVariant(variant.id)}
+                    onClick={() => handleVariantChange(variant.id)}
                     disabled={!variant.available}
                     className={`group relative flex items-center justify-center rounded-full transition-all ${
-                      variant.type === 'color'
-                        ? 'h-10 w-10'
-                        : 'px-4 py-2 border'
+                      variant.type === "color"
+                        ? "h-10 w-10"
+                        : "px-4 py-2 border"
                     } ${
                       selectedVariant === variant.id
-                        ? variant.type === 'color'
-                          ? 'ring-2 ring-black ring-offset-2'
-                          : 'border-black bg-black text-white'
-                        : variant.type === 'color'
-                        ? 'ring-1 ring-gray-300'
-                        : 'border-gray-300 hover:border-black'
-                    } ${
-                      !variant.available && 'opacity-25 cursor-not-allowed'
-                    }`}
+                        ? variant.type === "color"
+                          ? "ring-2 ring-black ring-offset-2"
+                          : "border-black bg-black text-white"
+                        : variant.type === "color"
+                          ? "ring-1 ring-gray-300"
+                          : "border-gray-300 hover:border-black"
+                    } ${!variant.available && "opacity-25 cursor-not-allowed"}`}
                   >
-                    {variant.type === 'color' ? (
+                    {variant.type === "color" ? (
                       <span
                         className="h-8 w-8 rounded-full border border-gray-200"
                         style={{ backgroundColor: variant.value }}
                       />
                     ) : (
-                      <span className="text-sm font-medium">{variant.name}</span>
+                      <span className="text-sm font-medium">
+                        {variant.name}
+                      </span>
                     )}
                     {!variant.available && (
                       <span className="absolute inset-0 flex items-center justify-center">
@@ -183,28 +203,28 @@ export function ProductDetail({ product }: ProductDetailProps) {
 
           {/* 庫存狀態 */}
           <div className="mt-6">
-            <p className={`text-sm ${product.inStock ? 'text-green-600' : 'text-red-600'}`}>
-              {product.inStock ? '✓ 現貨供應' : '✗ 暫時缺貨'}
+            <p
+              className={`text-sm ${product.inStock ? "text-green-600" : "text-red-600"}`}
+            >
+              {product.inStock ? "✓ 現貨供應" : "✗ 暫時缺貨"}
             </p>
           </div>
 
           {/* 加入購物車按鈕 */}
           <div className="mt-10">
-            <Button
-              size="lg"
-              className="w-full"
-              disabled={!product.inStock}
-            >
+            <Button size="lg" className="w-full" disabled={!product.inStock}>
               加入購物袋
             </Button>
           </div>
 
           {/* 縮圖 */}
-          {product.images.length > 1 && (
+          {currentImages.length > 1 && (
             <div className="mt-8">
-              <h3 className="text-sm font-medium text-gray-900 mb-4">更多圖片</h3>
+              <h3 className="text-sm font-medium text-gray-900 mb-4">
+                更多圖片
+              </h3>
               <div className="grid grid-cols-4 gap-3">
-                {product.images.map((image, index) => (
+                {currentImages.map((image, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentImageIndex(index)}

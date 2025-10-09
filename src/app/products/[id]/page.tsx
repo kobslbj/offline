@@ -7,9 +7,11 @@ interface ProductPageProps {
   params: Promise<{ id: string }>;
 }
 
-export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: ProductPageProps): Promise<Metadata> {
   const { id } = await params;
-  const product = SAMPLE_PRODUCTS.find(p => p.id === id);
+  const product = SAMPLE_PRODUCTS.find((p) => p.id === id);
 
   if (!product) {
     return {
@@ -31,7 +33,7 @@ export async function generateStaticParams() {
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { id } = await params;
-  const product = SAMPLE_PRODUCTS.find(p => p.id === id);
+  const product = SAMPLE_PRODUCTS.find((p) => p.id === id);
 
   if (!product) {
     notFound();

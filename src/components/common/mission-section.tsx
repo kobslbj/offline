@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
-import { CONTENT } from '@/lib/constants'
-import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { CONTENT } from "@/lib/constants";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
 export function MissionSection() {
   return (
@@ -16,8 +16,8 @@ export function MissionSection() {
             className="mb-4 text-sm tracking-widest text-white/60 uppercase"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
             Our Mission
           </motion.p>
@@ -26,8 +26,8 @@ export function MissionSection() {
             className="text-4xl md:text-5xl lg:text-6xl font-normal leading-tight mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
           >
             {CONTENT.mission.title}
           </motion.h2>
@@ -36,8 +36,8 @@ export function MissionSection() {
             className="text-base md:text-lg text-white/80 leading-relaxed mb-10 max-w-3xl"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
           >
             {CONTENT.mission.description}
           </motion.p>
@@ -46,18 +46,20 @@ export function MissionSection() {
             className="flex items-center gap-4"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6, delay: 0.15, ease: 'easeOut' }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
           >
             <Link href="/about">
               <button className="border border-white/60 text-white font-medium px-6 py-2.5 rounded-full text-base hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
                 {CONTENT.mission.cta}
               </button>
             </Link>
-            <span className="text-sm text-white/50">了解 Offline 的設計哲學與長期承諾</span>
+            <span className="text-sm text-white/50">
+              了解 Offline 的設計哲學與長期承諾
+            </span>
           </motion.div>
         </div>
       </div>
     </section>
-  )
+  );
 }

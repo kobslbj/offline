@@ -1,27 +1,30 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { ChevronDown } from 'lucide-react'
-import { useState } from 'react'
-import { NavigationItem } from '@/lib/types'
-import { motion, AnimatePresence } from 'framer-motion'
-import { cn } from '@/lib/utils'
+import Link from "next/link";
+import { ChevronDown } from "lucide-react";
+import { useState } from "react";
+import { NavigationItem } from "@/lib/types";
+import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 interface NavigationMenuProps {
-  items: NavigationItem[]
-  isScrolled?: boolean
+  items: NavigationItem[];
+  isScrolled?: boolean;
 }
 
-export function NavigationMenu({ items, isScrolled = false }: NavigationMenuProps) {
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+export function NavigationMenu({
+  items,
+  isScrolled = false,
+}: NavigationMenuProps) {
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   const handleMouseEnter = (itemName: string) => {
-    setActiveDropdown(itemName)
-  }
+    setActiveDropdown(itemName);
+  };
 
   const handleMouseLeave = () => {
-    setActiveDropdown(null)
-  }
+    setActiveDropdown(null);
+  };
 
   return (
     <div className="flex items-center space-x-8">
@@ -36,7 +39,9 @@ export function NavigationMenu({ items, isScrolled = false }: NavigationMenuProp
             href={item.href}
             className={cn(
               "flex items-center transition-all duration-200 font-medium text-lg group",
-              isScrolled ? "text-gray-900 hover:text-black" : "text-white/90 hover:text-white"
+              isScrolled
+                ? "text-gray-900 hover:text-black"
+                : "text-white/90 hover:text-white",
             )}
           >
             <motion.span
@@ -47,8 +52,8 @@ export function NavigationMenu({ items, isScrolled = false }: NavigationMenuProp
             </motion.span>
             {item.children && (
               <motion.div
-                animate={{ 
-                  rotate: activeDropdown === item.name ? 180 : 0 
+                animate={{
+                  rotate: activeDropdown === item.name ? 180 : 0,
                 }}
                 transition={{ duration: 0.2 }}
               >
@@ -60,7 +65,7 @@ export function NavigationMenu({ items, isScrolled = false }: NavigationMenuProp
           {/* Dropdown Menu */}
           <AnimatePresence>
             {item.children && activeDropdown === item.name && (
-              <motion.div 
+              <motion.div
                 className="absolute top-full left-0 mt-3 w-56 bg-white/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl z-10 overflow-hidden"
                 initial={{ opacity: 0, y: -10, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -95,5 +100,5 @@ export function NavigationMenu({ items, isScrolled = false }: NavigationMenuProp
         </div>
       ))}
     </div>
-  )
+  );
 }
