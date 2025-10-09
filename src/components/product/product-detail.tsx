@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Product } from "@/lib/types";
 import { Button } from "@/components/ui/button";
@@ -87,9 +88,9 @@ export function ProductDetail({ product }: ProductDetailProps) {
           <nav className="text-sm mb-4">
             <ol className="flex items-center gap-2">
               <li>
-                <a href="/products" className="text-gray-500 hover:text-black transition-colors">
+                <Link href="/products" className="text-gray-500 hover:text-black transition-colors">
                   {product.category.name}
-                </a>
+                </Link>
               </li>
               <li className="text-gray-300">/</li>
               <li className="text-gray-900">{product.name.split(' ')[0]}</li>

@@ -75,7 +75,7 @@ export function ProductGrid({
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
     >
-      {products.map((product, index) => (
+      {products.map((product) => (
         <motion.div
           key={product.id}
           variants={itemVariants}
