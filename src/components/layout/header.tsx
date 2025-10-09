@@ -76,7 +76,7 @@ export function Header() {
               >
                 {/* 黑色 Logo - 滾動後顯示 */}
                 <Image
-                  src="/images/logos/Offline logo Black.png"
+                  src="/images/logos/offline-logo-black.png"
                   alt={SITE_CONFIG.name}
                   width={120}
                   height={32}
@@ -88,7 +88,7 @@ export function Header() {
                 />
                 {/* 白色 Logo - 初始狀態顯示 */}
                 <Image
-                  src="/images/logos/Offline logo white.png"
+                  src="/images/logos/offline-logo-white.png"
                   alt={SITE_CONFIG.name}
                   width={120}
                   height={32}

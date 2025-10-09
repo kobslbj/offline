@@ -68,9 +68,9 @@ export const SAMPLE_PRODUCTS: Product[] = [
     price: 3300,
     images: [
       "/images/categories/mans/polo-001-front.png",
-      "/images/categories/mans/polo-1-gallery/polo-model-photo-back.png",
-      "/images/categories/mans/polo-1-gallery/polo-product-photo-front.png",
-      "/images/categories/mans/polo-1-gallery/polo-product-photo-back.png",
+      "/images/categories/mans/polo-1-gallery/white/polo-model-photo-back.png",
+      "/images/categories/mans/polo-1-gallery/white/polo-product-photo-front.png",
+      "/images/categories/mans/polo-1-gallery/white/polo-product-photo-back.png",
     ],
     category: {
       id: "apparel",
