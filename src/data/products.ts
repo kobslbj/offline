@@ -152,10 +152,10 @@ export const SAMPLE_PRODUCTS: Product[] = [
         type: "color",
         available: true,
         images: [
-          "/images/categories/mans/tshirt-1-gallery/black/T-shirt-001-model-front-black.png",
-          "/images/categories/mans/tshirt-1-gallery/black/T-shirt-001-model-back-black.png",
-          "/images/categories/mans/tshirt-1-gallery/black/T-shirt-001-product-black-front.png",
-          "/images/categories/mans/tshirt-1-gallery/black/T-shirt-001-product-black-back.png",
+          "/images/categories/mans/tshirt-1-gallery/black/t-shirt-001-model-front-black.png",
+          "/images/categories/mans/tshirt-1-gallery/black/t-shirt-001-model-back-black.png",
+          "/images/categories/mans/tshirt-1-gallery/black/t-shirt-001-product-black-front.png",
+          "/images/categories/mans/tshirt-1-gallery/black/t-shirt-001-product-black-back.png",
         ],
       },
       {
@@ -165,10 +165,10 @@ export const SAMPLE_PRODUCTS: Product[] = [
         type: "color",
         available: true,
         images: [
-          "/images/categories/mans/tshirt-1-gallery/blue/T-shirt-001-model-front-blue.png",
-          "/images/categories/mans/tshirt-1-gallery/blue/T-shirt-001-model-back-blue.png",
-          "/images/categories/mans/tshirt-1-gallery/blue/T-shirt-001-product-blue-front.png",
-          "/images/categories/mans/tshirt-1-gallery/blue/T-shirt-001-product-blue-back.png",
+          "/images/categories/mans/tshirt-1-gallery/blue/t-shirt-001-model-front-blue.png",
+          "/images/categories/mans/tshirt-1-gallery/blue/t-shirt-001-model-back-blue.png",
+          "/images/categories/mans/tshirt-1-gallery/blue/t-shirt-001-product-blue-front.png",
+          "/images/categories/mans/tshirt-1-gallery/blue/t-shirt-001-product-blue-back.png",
         ],
       },
     ],
@@ -183,9 +183,9 @@ export const SAMPLE_PRODUCTS: Product[] = [
     price: 2200,
     images: [
       "/images/categories/mans/tshirt-002-front.png",
-      "/images/categories/mans/tshirt-002-gallery/T-shirt-002-model-back.png",
-      "/images/categories/mans/tshirt-002-gallery/T-shirt-002-product-photo-front.png",
-      "/images/categories/mans/tshirt-002-gallery/T-shirt-002-product-photo-back.png",
+      "/images/categories/mans/tshirt-002-gallery/t-shirt-002-model-back.png",
+      "/images/categories/mans/tshirt-002-gallery/t-shirt-002-product-photo-front.png",
+      "/images/categories/mans/tshirt-002-gallery/t-shirt-002-product-photo-back.png",
     ],
     category: {
       id: "apparel",
