@@ -122,7 +122,7 @@ export const SAMPLE_PRODUCTS: Product[] = [
     id: "m3",
     name: "開球時刻系列短袖上衣 7:00 am",
     description:
-      "簡約設計的日常短袖T恤，舒適的面料搭配經典剪裁，適合各種場合穿著。",
+      "Offline T-shirt 以俐落線條結合日常舒適，背後大面積圖像與胸前低調 Logo，兼具大膽與細節。圖像採用刺青風格描繪兩隻信天翁，象徵自由與遠航，並融合高爾夫球與球 tee 元素，展現專注與平衡。舒適好穿，風格鮮明，無論在球場或街頭，都是你的最佳選擇。",
     price: 2200,
     images: [
       "/images/categories/mans/tshirt-001-front.png",
@@ -179,7 +179,8 @@ export const SAMPLE_PRODUCTS: Product[] = [
   {
     id: "m4",
     name: "開球時刻系列短袖上衣 6:00 am",
-    description: "舒適的日常T恤，採用優質棉料製作，柔軟親膚，透氣性佳。",
+    description:
+      "簡約設計，卻能展現最大魅力。Offline T-shirt 以俐落線條結合日常舒適，背後大面積圖像與胸前低調 Logo，兼具大膽與細節。舒適好穿，風格鮮明，無論在球場或街頭，都是你的最佳選擇。",
     price: 2200,
     images: [
       "/images/categories/mans/tshirt-002-front.png",
