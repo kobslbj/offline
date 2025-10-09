@@ -37,7 +37,7 @@ export function ShoppingSideMenu({ className }: { className?: string }) {
         // glass panel
         "bg-white/80 backdrop-blur-xl ring-1 ring-black/5 shadow-[0_10px_40px_rgba(0,0,0,0.12)]",
         // shape and spacing
-        "rounded-l-3xl px-5 sm:px-6 py-8",
+        "rounded-l-3xl px-5 sm:px-6 py-8 pt-24 md:pt-28",
         className
       )}
       aria-label="Shopping categories"

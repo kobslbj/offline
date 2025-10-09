@@ -6,7 +6,7 @@ import { ChevronDown } from 'lucide-react'
 import { ProductCard } from '@/components/product/product-card'
 import { MissionSection } from '@/components/common/mission-section'
 import { cn } from '@/lib/utils'
-import { Product } from '@/lib/types'
+import { SAMPLE_PRODUCTS } from '@/data/products'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,142 +20,16 @@ interface ProductCatalogProps {
 
 const categories = {
   mens: [
-    { id: 'all', label: '全部', count: 6 },
+    { id: 'all', label: '全部', count: 5 },
     { id: 'apparel', label: '服飾', count: 4 },
-    { id: 'accessories', label: '配件', count: 2 },
+    { id: 'accessories', label: '配件', count: 1 },
   ],
   womens: [
-    { id: 'all', label: '全部', count: 6 },
+    { id: 'all', label: '全部', count: 5 },
     { id: 'apparel', label: '服飾', count: 4 },
-    { id: 'accessories', label: '配件', count: 2 },
+    { id: 'accessories', label: '配件', count: 1 },
   ]
 }
-
-const mockMensProducts: Product[] = [
-  {
-    id: '1',
-    name: '經典帽款休閒帽',
-    description: '簡約設計的日常帽款',
-    price: 1680,
-    images: ['/images/categories/mans/man-cap.png'],
-    category: { id: 'accessories', name: '配件', slug: 'accessories', description: '', image: '' },
-    variants: [
-      { id: '1-1', name: '灰色', value: '#E5E7EB', type: 'color', available: true },
-      { id: '1-2', name: '黑色', value: '#1F2937', type: 'color', available: true },
-      { id: '1-3', name: '白色', value: '#F9FAFB', type: 'color', available: true },
-    ],
-    inStock: true,
-    featured: true,
-  },
-  {
-    id: '2',
-    name: '經典款短袖Polo 衫',
-    description: '舒適的日常Polo衫',
-    price: 3300,
-    images: ['/images/categories/mans/polo-001-front.png'],
-    category: { id: 'apparel', name: '服飾', slug: 'apparel', description: '', image: '' },
-    variants: [
-      { id: '2-1', name: '白色', value: '#F9FAFB', type: 'color', available: true },
-      { id: '2-2', name: '藍色', value: '#3B82F6', type: 'color', available: true },
-      { id: '2-3', name: '灰色', value: '#6B7280', type: 'color', available: true },
-    ],
-    inStock: true,
-    featured: true,
-  },
-  {
-    id: '3',
-    name: '經典款短袖上衣',
-    description: '簡約的短袖T恤',
-    price: 2200,
-    images: ['/images/categories/mans/tshirt-001-front.png'],
-    category: { id: 'apparel', name: '服飾', slug: 'apparel', description: '', image: '' },
-    variants: [
-      { id: '3-1', name: '黑色', value: '#1F2937', type: 'color', available: true },
-      { id: '3-2', name: '白色', value: '#F9FAFB', type: 'color', available: true },
-      { id: '3-3', name: '灰色', value: '#6B7280', type: 'color', available: true },
-    ],
-    inStock: true,
-    featured: false,
-  },
-  {
-    id: '4',
-    name: '經典款短袖上衣',
-    description: '舒適的日常T恤',
-    price: 2200,
-    images: ['/images/categories/mans/tshirt-002-front.png'],
-    category: { id: 'apparel', name: '服飾', slug: 'apparel', description: '', image: '' },
-    variants: [
-      { id: '4-1', name: '黑色', value: '#1F2937', type: 'color', available: true },
-      { id: '4-2', name: '藍色', value: '#1E40AF', type: 'color', available: true },
-      { id: '4-3', name: '白色', value: '#F9FAFB', type: 'color', available: true },
-    ],
-    inStock: true,
-    featured: false,
-  },
-]
-
-const mockWomensProducts: Product[] = [
-  {
-    id: 'w1',
-    name: '經典帽款休閒帽',
-    description: '簡約設計的日常帽款',
-    price: 1680,
-    images: ['/images/categories/woman/woman-cap.png'],
-    category: { id: 'accessories', name: '配件', slug: 'accessories', description: '', image: '' },
-    variants: [
-      { id: 'w1-1', name: '米白色', value: '#FEF7ED', type: 'color', available: true },
-      { id: 'w1-2', name: '淺灰色', value: '#F3F4F6', type: 'color', available: true },
-      { id: 'w1-3', name: '粉色', value: '#FDF2F8', type: 'color', available: true },
-    ],
-    inStock: true,
-    featured: true,
-  },
-  {
-    id: 'w2',
-    name: '經典款短袖Polo 衫',
-    description: '舒適的日常Polo衫',
-    price: 3300,
-    images: ['/images/categories/woman/polo-001-front.png'],
-    category: { id: 'apparel', name: '服飾', slug: 'apparel', description: '', image: '' },
-    variants: [
-      { id: 'w2-1', name: '純白色', value: '#FFFFFF', type: 'color', available: true },
-      { id: 'w2-2', name: '淡藍色', value: '#DBEAFE', type: 'color', available: true },
-      { id: 'w2-3', name: '粉色', value: '#FDF2F8', type: 'color', available: true },
-    ],
-    inStock: true,
-    featured: true,
-  },
-  {
-    id: 'w3',
-    name: '經典款短袖上衣',
-    description: '簡約的短袖T恤',
-    price: 2200,
-    images: ['/images/categories/woman/tshirt-001-front.png'],
-    category: { id: 'apparel', name: '服飾', slug: 'apparel', description: '', image: '' },
-    variants: [
-      { id: 'w3-1', name: '黑色', value: '#1F2937', type: 'color', available: true },
-      { id: 'w3-2', name: '白色', value: '#F9FAFB', type: 'color', available: true },
-      { id: 'w3-3', name: '粉色', value: '#FDF2F8', type: 'color', available: true },
-    ],
-    inStock: true,
-    featured: false,
-  },
-  {
-    id: 'w4',
-    name: '經典款短袖上衣',
-    description: '舒適的日常T恤',
-    price: 2200,
-    images: ['/images/categories/woman/tshirt-002-front.png'],
-    category: { id: 'apparel', name: '服飾', slug: 'apparel', description: '', image: '' },
-    variants: [
-      { id: 'w4-1', name: '黑色', value: '#1F2937', type: 'color', available: true },
-      { id: 'w4-2', name: '白色', value: '#F9FAFB', type: 'color', available: true },
-      { id: 'w4-3', name: '粉色', value: '#FDF2F8', type: 'color', available: true },
-    ],
-    inStock: true,
-    featured: false,
-  },
-]
 
 const sortOptions = [
   { value: 'newest', label: '最新上架' },
@@ -170,12 +44,17 @@ export function ProductCatalog({ category }: ProductCatalogProps) {
 
   const isMens = category === 'mens'
   const currentCategories = categories[isMens ? 'mens' : 'womens']
-  const currentProducts = isMens ? mockMensProducts : mockWomensProducts
   const title = isMens ? '男士' : '女士'
 
+  // 根據性別過濾商品
+  const genderFilteredProducts = SAMPLE_PRODUCTS.filter(
+    product => product.gender === (isMens ? 'mens' : 'womens')
+  )
+
+  // 再根據類別過濾
   const filteredProducts = selectedCategory === 'all'
-    ? currentProducts
-    : currentProducts.filter(product => product.category.id === selectedCategory)
+    ? genderFilteredProducts
+    : genderFilteredProducts.filter(product => product.category.id === selectedCategory)
 
   const sortedProducts = [...filteredProducts].sort((a, b) => {
     switch (sortBy) {

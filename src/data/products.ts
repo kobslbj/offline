@@ -1,13 +1,45 @@
 import { Product } from '@/lib/types'
 
 export const SAMPLE_PRODUCTS: Product[] = [
+  // 男士商品
   {
-    id: '1',
-    name: '經典高爾夫POLO衫',
-    description: '舒適透氣的高品質POLO衫，適合球場內外穿著',
-    price: 1200,
-    originalPrice: 1500,
-    images: ['/images/products/polo-1.png'],
+    id: 'm1',
+    name: '開球時刻系列帽子 9:00 am',
+    description: '極簡條紋，日常舒適，低調簡約有態度。Logging Off 帽款，發球想到斜邊，自在切換。好搭配，好配住。',
+    price: 1680,
+    images: [
+      '/images/products/cap-1.png',
+      '/images/products/cap-1-gallery/cap-model-front.png',
+      '/images/products/cap-1-gallery/cap-model-woman-side.png',
+      '/images/products/cap-1-gallery/cap-product-photo-back.png',
+    ],
+    category: {
+      id: 'accessories',
+      name: '配件',
+      slug: 'accessories',
+      description: '精選高爾夫球配件用品',
+      image: '/images/categories/accessories.jpg'
+    },
+    variants: [
+      { id: 'cap-m-black', name: '黑色', value: '#000000', type: 'color', available: true },
+      { id: 'cap-m-navy', name: '深藍', value: '#1e3a8a', type: 'color', available: true },
+      { id: 'cap-m-white', name: '白色', value: '#ffffff', type: 'color', available: true },
+    ],
+    inStock: true,
+    featured: true,
+    gender: 'mens'
+  },
+  {
+    id: 'm2',
+    name: '開球時刻系列短袖 Polo 8:00 am',
+    description: '舒適透氣的高品質POLO衫，適合球場內外穿著。採用吸濕排汗面料，讓您在炎熱的天氣下依然保持乾爽舒適。',
+    price: 3300,
+    images: [
+      '/images/categories/mans/polo-001-front.png',
+      '/images/categories/mans/polo-1-gallery/polo-model-photo-back.png',
+      '/images/categories/mans/polo-1-gallery/polo-product-photo-front.png',
+      '/images/categories/mans/polo-1-gallery/polo-product-photo-back.png',
+    ],
     category: {
       id: 'apparel',
       name: '服飾',
@@ -16,19 +48,80 @@ export const SAMPLE_PRODUCTS: Product[] = [
       image: '/images/categories/apparel.jpg'
     },
     variants: [
-      { id: 'polo-black', name: '黑色', value: '#000000', type: 'color', available: true },
-      { id: 'polo-blue', name: '藍色', value: '#1e40af', type: 'color', available: true },
-      { id: 'polo-white', name: '白色', value: '#ffffff', type: 'color', available: true },
+      { id: 'polo-m-black', name: '黑色', value: '#000000', type: 'color', available: true },
+      { id: 'polo-m-navy', name: '深藍', value: '#1e3a8a', type: 'color', available: true },
+      { id: 'polo-m-white', name: '白色', value: '#ffffff', type: 'color', available: true },
     ],
     inStock: true,
-    featured: true
+    featured: true,
+    gender: 'mens'
   },
   {
-    id: '2',
-    name: '專業高爾夫帽',
-    description: '防曬透氣設計，提供最佳的球場保護',
-    price: 800,
-    images: ['/images/products/cap-1.png'],
+    id: 'm3',
+    name: '開球時刻系列短袖上衣 7:00 am',
+    description: '簡約設計的日常短袖T恤，舒適的面料搭配經典剪裁，適合各種場合穿著。',
+    price: 2200,
+    images: [
+      '/images/categories/mans/tshirt-001-front.png',
+      '/images/categories/mans/tshirt-001-gallery/T-shirt-001-model-back.png',
+      '/images/categories/mans/tshirt-001-gallery/T-shirt-001-product-photo-front.png',
+      '/images/categories/mans/tshirt-001-gallery/T-shirt-001-product-photo-back.png',
+    ],
+    category: {
+      id: 'apparel',
+      name: '服飾',
+      slug: 'apparel',
+      description: '專業高爾夫球服飾系列',
+      image: '/images/categories/apparel.jpg'
+    },
+    variants: [
+      { id: 'tshirt-m3-black', name: '黑色', value: '#000000', type: 'color', available: true },
+      { id: 'tshirt-m3-navy', name: '深藍', value: '#1e3a8a', type: 'color', available: true },
+      { id: 'tshirt-m3-white', name: '白色', value: '#ffffff', type: 'color', available: true },
+    ],
+    inStock: true,
+    featured: true,
+    gender: 'mens'
+  },
+  {
+    id: 'm4',
+    name: '開球時刻系列短袖上衣 6:00 am',
+    description: '舒適的日常T恤，採用優質棉料製作，柔軟親膚，透氣性佳。',
+    price: 2200,
+    images: [
+      '/images/categories/mans/tshirt-002-front.png',
+      '/images/categories/mans/tshirt-002-gallery/T-shirt-002-model-back.png',
+      '/images/categories/mans/tshirt-002-gallery/T-shirt-002-product-photo-front.png',
+      '/images/categories/mans/tshirt-002-gallery/T-shirt-002-product-photo-back.png',
+    ],
+    category: {
+      id: 'apparel',
+      name: '服飾',
+      slug: 'apparel',
+      description: '專業高爾夫球服飾系列',
+      image: '/images/categories/apparel.jpg'
+    },
+    variants: [
+      { id: 'tshirt-m4-black', name: '黑色', value: '#000000', type: 'color', available: true },
+      { id: 'tshirt-m4-navy', name: '深藍', value: '#1e3a8a', type: 'color', available: true },
+      { id: 'tshirt-m4-white', name: '白色', value: '#ffffff', type: 'color', available: true },
+    ],
+    inStock: true,
+    featured: true,
+    gender: 'mens'
+  },
+  // 女士商品
+  {
+    id: 'w1',
+    name: '開球時刻系列帽子 9:00 am',
+    description: '極簡條紋，日常舒適，低調簡約有態度。Logging Off 帽款，發球想到斜邊，自在切換。好搭配，好配住。',
+    price: 1680,
+    images: [
+      '/images/categories/woman/woman-cap.png',
+      '/images/categories/woman/woman-cap.png',
+      '/images/categories/woman/woman-cap.png',
+      '/images/categories/woman/woman-cap.png',
+    ],
     category: {
       id: 'accessories',
       name: '配件',
@@ -37,32 +130,93 @@ export const SAMPLE_PRODUCTS: Product[] = [
       image: '/images/categories/accessories.jpg'
     },
     variants: [
-      { id: 'cap-white', name: '白色', value: '#ffffff', type: 'color', available: true },
-      { id: 'cap-navy', name: '深藍', value: '#1e3a8a', type: 'color', available: true },
-      { id: 'cap-grey', name: '灰色', value: '#6b7280', type: 'color', available: true },
+      { id: 'cap-w-black', name: '黑色', value: '#000000', type: 'color', available: true },
+      { id: 'cap-w-navy', name: '深藍', value: '#1e3a8a', type: 'color', available: true },
+      { id: 'cap-w-white', name: '白色', value: '#ffffff', type: 'color', available: true },
     ],
     inStock: true,
-    featured: true
+    featured: true,
+    gender: 'womens'
   },
   {
-    id: '3',
-    name: '高爾夫球訓練組',
-    description: '專業訓練用球組合，提升你的球技表現',
-    price: 1600,
-    images: ['/images/products/accessories-1.png'],
+    id: 'w2',
+    name: '開球時刻系列短袖 Polo 8:00 am',
+    description: '舒適透氣的高品質POLO衫，適合球場內外穿著。採用吸濕排汗面料，讓您在炎熱的天氣下依然保持乾爽舒適。',
+    price: 3300,
+    images: [
+      '/images/categories/woman/polo-001-front.png',
+      '/images/categories/woman/polo-001-front.png',
+      '/images/categories/woman/polo-001-front.png',
+      '/images/categories/woman/polo-001-front.png',
+    ],
     category: {
-      id: 'accessories',
-      name: '配件',
-      slug: 'accessories',
-      description: '精選高爾夫球配件用品',
-      image: '/images/categories/accessories.jpg'
+      id: 'apparel',
+      name: '服飾',
+      slug: 'apparel',
+      description: '專業高爾夫球服飾系列',
+      image: '/images/categories/apparel.jpg'
     },
     variants: [
-      { id: 'balls-white', name: '白球', value: '#ffffff', type: 'color', available: true },
-      { id: 'balls-yellow', name: '黃球', value: '#fbbf24', type: 'color', available: true },
-      { id: 'balls-orange', name: '橘球', value: '#f97316', type: 'color', available: true },
+      { id: 'polo-w-black', name: '黑色', value: '#000000', type: 'color', available: true },
+      { id: 'polo-w-navy', name: '深藍', value: '#1e3a8a', type: 'color', available: true },
+      { id: 'polo-w-white', name: '白色', value: '#ffffff', type: 'color', available: true },
     ],
     inStock: true,
-    featured: true
+    featured: true,
+    gender: 'womens'
+  },
+  {
+    id: 'w3',
+    name: '開球時刻系列短袖上衣 7:00 am',
+    description: '簡約設計的日常短袖T恤，舒適的面料搭配經典剪裁，適合各種場合穿著。',
+    price: 2200,
+    images: [
+      '/images/categories/woman/tshirt-001-front.png',
+      '/images/categories/woman/tshirt-001-front.png',
+      '/images/categories/woman/tshirt-001-front.png',
+      '/images/categories/woman/tshirt-001-front.png',
+    ],
+    category: {
+      id: 'apparel',
+      name: '服飾',
+      slug: 'apparel',
+      description: '專業高爾夫球服飾系列',
+      image: '/images/categories/apparel.jpg'
+    },
+    variants: [
+      { id: 'tshirt-w3-black', name: '黑色', value: '#000000', type: 'color', available: true },
+      { id: 'tshirt-w3-navy', name: '深藍', value: '#1e3a8a', type: 'color', available: true },
+      { id: 'tshirt-w3-white', name: '白色', value: '#ffffff', type: 'color', available: true },
+    ],
+    inStock: true,
+    featured: true,
+    gender: 'womens'
+  },
+  {
+    id: 'w4',
+    name: '開球時刻系列短袖上衣 6:00 am',
+    description: '舒適的日常T恤，採用優質棉料製作，柔軟親膚，透氣性佳。',
+    price: 2200,
+    images: [
+      '/images/categories/woman/tshirt-002-front.png',
+      '/images/categories/woman/tshirt-002-front.png',
+      '/images/categories/woman/tshirt-002-front.png',
+      '/images/categories/woman/tshirt-002-front.png',
+    ],
+    category: {
+      id: 'apparel',
+      name: '服飾',
+      slug: 'apparel',
+      description: '專業高爾夫球服飾系列',
+      image: '/images/categories/apparel.jpg'
+    },
+    variants: [
+      { id: 'tshirt-w4-black', name: '黑色', value: '#000000', type: 'color', available: true },
+      { id: 'tshirt-w4-navy', name: '深藍', value: '#1e3a8a', type: 'color', available: true },
+      { id: 'tshirt-w4-white', name: '白色', value: '#ffffff', type: 'color', available: true },
+    ],
+    inStock: true,
+    featured: true,
+    gender: 'womens'
   }
 ]

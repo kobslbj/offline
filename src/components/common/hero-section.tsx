@@ -17,9 +17,9 @@ export function HeroSection() {
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
 
   return (
-    <section 
+    <section
       ref={ref}
-      className="relative h-screen overflow-hidden"
+      className="relative h-screen overflow-hidden pt-16 md:pt-20"
     >
       {/* Background Image - 使用 testing.png */}
       <motion.div 

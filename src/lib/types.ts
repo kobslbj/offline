@@ -10,6 +10,7 @@ export interface Product {
   variants: ProductVariant[]
   inStock: boolean
   featured: boolean
+  gender?: 'mens' | 'womens' | 'unisex'
 }
 
 export interface ProductVariant {
