@@ -126,9 +126,9 @@ export const SAMPLE_PRODUCTS: Product[] = [
     price: 2200,
     images: [
       "/images/categories/mans/tshirt-001-front.png",
-      "/images/categories/mans/tshirt-001-gallery/T-shirt-001-model-back.png",
-      "/images/categories/mans/tshirt-001-gallery/T-shirt-001-product-photo-front.png",
-      "/images/categories/mans/tshirt-001-gallery/T-shirt-001-product-photo-back.png",
+      "/images/categories/mans/tshirt-1-gallery/white/t-shirt-001-model-back.png",
+      "/images/categories/mans/tshirt-1-gallery/white/t-shirt-001-product-photo-front.png",
+      "/images/categories/mans/tshirt-1-gallery/white/t-shirt-001-product-photo-back.png",
     ],
     category: {
       id: "apparel",
